@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Local Storage</title>
+	<style type="text/css">
+		#spann{
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body style="width: 70%; font-size: 20px;">
+	<h1 style="color: #03d3fc; background-color: #fff7ab; padding: 10px;">Josh Ex-Assignment</h1>
+	<form>
+		<fieldset>
+			<legend>Insert Data</legend>
+			<input style="width: 100%" id="title" type="text" name="title" placeholder="Add Title"><br><br>
+			<textarea style="width: 100%" id="subtitles" rows="5" placeholder="Add comma separated Skills"></textarea><br><br>
+			<input type="button" id="add" onclick="demo()" value="Add">
+		</fieldset>
+	</form><br><br>
+	<fieldset>
+		<legend>Show Data</legend>
+		<div id="showData"></div>
+	</fieldset>
+	<script type="text/javascript">
+		var title = document.getElementById('title');
+		var arr = document.getElementById('subtitles');
+		function demo() {
+			var _title = title.value;
+			var _arr = arr.value.split(",");
+			console.log(_title);
+			console.log(_arr);
+			localStorage.setItem("title", _title);
+			localStorage.setItem("subtitles", _arr);
+			var dataa = localStorage.getItem("title");
+			var dataaa = localStorage.getItem("subtitles");
+			document.getElementById("showData").outerHTML += `<h1 id="firstheading">${dataa}<span id="spann" onclick="hideFun()">&times; </span></h1>`;
+			document.getElementById("firstheading").innerHTML += `${dataaa}`;
+		}
+		function hideFun(){
+			document.getElementById("firstheading").style.display = "none";
+		}
+	</script>
+</body>
+</html>
